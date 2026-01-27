@@ -20,6 +20,11 @@ const config: Config = {
                     700: '#1a1a1a',
                     600: '#262626',
                 },
+                brand: {
+                    black: '#0D0D0D', // Rich Black
+                    white: '#F5F5F3', // Off-white
+                    orange: '#FF4D00', // Safety Orange
+                },
                 accent: {
                     DEFAULT: '#3b82f6',
                     light: '#60a5fa',

@@ -1,239 +1,223 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
+import ProjectCard from "@/components/ui/ProjectCard";
+import Badge from "@/components/ui/Badge";
+import { ChevronRight, Brain, Terminal, Database, Sparkles, Building2, Users, GraduationCap } from "lucide-react";
 
-const BookingModal = dynamic(() => import("@/components/BookingModal"), {
-    ssr: false,
-    loading: () => null,
-});
+// Placeholder icons for AI Stack until we have real SVGs/Images
+const AiIcon = ({ name }: { name: string }) => (
+    <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors cursor-default whitespace-nowrap">
+        <Sparkles className="w-4 h-4 text-emerald-500" />
+        <span className="text-sm font-medium text-zinc-300">{name}</span>
+    </div>
+);
 
 export default function PortfolioPage() {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const [isBookingOpen, setIsBookingOpen] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        const elements = document.querySelectorAll(".reveal");
-        elements.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <>
-            <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
-            <main className="bg-[#050505] text-[#FAFAFA] font-sans overflow-x-hidden selection:bg-emerald-500 selection:text-white">
+            <Navbar onOpenBooking={() => { }} />
+
+            <main className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 selection:text-emerald-200 font-sans">
                 <style jsx global>{`
-          :root {
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.4);
-            --bg-card: #0A0A0A;
-            --glass-bg: rgba(10, 10, 10, 0.7);
-          }
-          
-          .font-serif {
-             font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
-          }
+                    .font-serif { font-family: var(--font-playfair), 'Playfair Display', Georgia, serif; }
+                    /* Custom Scrollbar for Horizontal Rail */
+                    .no-scrollbar::-webkit-scrollbar { display: none; }
+                    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                `}</style>
 
-          .text-accent {
-            color: var(--accent);
-          }
-
-          .bg-accent {
-            background-color: var(--accent);
-          }
-           
-          .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          }
-          .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          .delay-1 { transition-delay: 0.1s; }
-          .delay-2 { transition-delay: 0.2s; }
-          .delay-3 { transition-delay: 0.3s; }
-        `}</style>
-
-                {/* Navigation spacer */}
-                <div className="h-20" />
-
-                {/* Hero Section */}
-                <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden pt-20">
-                    {/* Dot Grid Background */}
-                    <div className="absolute inset-0 bg-[radial-gradient(#ffffff1a_1px,transparent_1px)] [background-size:40px_40px] pointer-events-none opacity-20" />
-
-                    {/* Glow Effect */}
-                    <div className="absolute w-[600px] h-[600px] bg-emerald-500/20 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-
-                    <div className="relative z-10 max-w-4xl px-6 text-center">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-500 text-sm font-medium mb-8 animate-fade-in-up">
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                            Available for new projects
-                        </div>
-
-                        <h1 className="font-serif text-6xl md:text-8xl mb-8 bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent reveal active">
-                            Ecosystem<br />Builder
-                        </h1>
-
-                        <p className="text-zinc-400 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed reveal delay-1 active">
-                            I don't just build websites. I engineer digital ecosystems that turn silent visitors into raving fans and revenue.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center reveal delay-2 active">
-                            <a href="mailto:hello@robingautam.in" className="px-8 py-4 bg-emerald-500 text-black font-semibold rounded-xl hover:translate-y-[-2px] hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all duration-300">
-                                Work With Me
-                            </a>
-                            <a href="#work" className="px-8 py-4 border border-white/10 rounded-xl hover:bg-white/5 transition-colors">
-                                View Selected Work
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                {/* About Section */}
-                <section id="about" className="py-32 bg-gradient-to-b from-[#050505] via-[#0A0A0A] to-[#050505]">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid md:grid-cols-2 gap-20 items-center">
-                            <div className="reveal active">
-                                <div className="text-emerald-500 text-xs font-bold tracking-widest uppercase mb-4">The Story</div>
-                                <h2 className="font-serif text-4xl md:text-5xl mb-8">From Code to Core Business Logic</h2>
-                                <div className="space-y-6 text-zinc-400 text-lg leading-relaxed">
-                                    <p>
-                                        <strong className="text-white">It started with a simple observation.</strong> Most founders were paying for websites but needed systems. They got pretty pixels but broken funnels.
-                                    </p>
-                                    <p>
-                                        I spent years at the intersection of product strategy and engineering. I realized that a website isn't a digital brochure—it's the <span className="text-emerald-500">operating system</span> of your brand.
-                                    </p>
-                                    <p>
-                                        Today, I run a specialized digital product studio. We strip away the fluff and build lean, high-performance engines that drive growth. No corporate jargon. No bloated timelines. Just shipping.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="relative reveal delay-1 active group">
-                                <div className="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700" />
-                                <div className="relative border border-white/10 rounded-3xl overflow-hidden aspect-[4/5] bg-[#111]">
-                                    {/* Placeholder for About Image - could use an actual image here if available */}
-                                    <div className="absolute inset-0 flex items-center justify-center text-zinc-800 text-9xl font-serif italic opacity-20 select-none">RG</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Real Impact Section (Bento Grid) */}
-                <section id="work" className="py-32">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="mb-20">
-                            <div className="text-emerald-500 text-xs font-bold tracking-widest uppercase mb-4">Selected Work</div>
-                            <h2 className="font-serif text-4xl md:text-5xl">Real Impact. Real Revenue.</h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
-                            {/* CorStone - Large */}
-                            <div className="md:col-span-7 md:row-span-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 group reveal active">
-                                <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-500 mb-6 group-hover:scale-110 transition-transform">
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
-                                </div>
-                                <h3 className="font-serif text-3xl mb-2">CorStone</h3>
-                                <div className="text-emerald-500 font-medium mb-6">Process Digitalization</div>
-                                <p className="text-zinc-400 leading-relaxed mb-8">
-                                    Transformed manual onboarding for a nonprofit into a fully automated digital pipeline. Reduced administrative load by 40% and improved volunteer retention.
-                                </p>
-                                <div className="flex gap-4">
-                                    <div className="px-4 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                                        <div className="text-2xl font-bold text-emerald-500">40%</div>
-                                        <div className="text-xs text-zinc-500 uppercase">Efficiency Boost</div>
-                                    </div>
-                                </div>
+                {/* --- SECTION 1: THE HERO (The "Bridge") --- */}
+                <section className="pt-32 pb-16 md:pt-48 md:pb-32 px-6">
+                    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/20 border border-emerald-500/20 text-emerald-500 text-xs font-bold tracking-widest uppercase mb-6">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                Dual Profile
                             </div>
 
-                            {/* StockGro - Medium */}
-                            <div className="md:col-span-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 reveal delay-1 active">
-                                <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-6">
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                                </div>
-                                <h3 className="font-serif text-3xl mb-2">StockGro</h3>
-                                <div className="text-purple-400 font-medium mb-4">Investment Infrastructure</div>
-                                <p className="text-zinc-400 leading-relaxed">
-                                    Built high-performance landing pages for India's largest social trading platform using Next.js.
-                                </p>
-                            </div>
+                            <h1 className="font-serif text-5xl md:text-7xl leading-[1.1] mb-6">
+                                Strategy in the <br />
+                                <span className="text-zinc-500">Boardroom.</span><br />
+                                Code in the <br />
+                                <span className="text-emerald-500">Terminal.</span>
+                            </h1>
 
-                            {/* Finlatics - Small */}
-                            <div className="md:col-span-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 reveal delay-2 active">
-                                <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                                </div>
-                                <h3 className="font-serif text-3xl mb-2">Finlatics</h3>
-                                <div className="text-blue-400 font-medium mb-4">EdTech Platform</div>
-                                <p className="text-zinc-400 leading-relaxed">
-                                    Optimized user dashboard performance for data-heavy financial simulations.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Leadership Section */}
-                <section className="py-32 bg-[#080808]">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-20">
-                            <h2 className="font-serif text-4xl mb-6">More Than Just Code</h2>
-                            <p className="text-zinc-400 max-w-2xl mx-auto">
-                                My background isn't just engineering. It's leadership, strategy, and business execution.
+                            <p className="text-lg md:text-xl text-zinc-400 max-w-lg mb-8 leading-relaxed">
+                                MBA Candidate at IIM Rohtak and Full-Stack Engineer. I don't just build software; I engineer business operations.
                             </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <a
+                                    href="#work"
+                                    className="px-8 py-4 bg-emerald-500 text-[#050505] font-bold rounded-lg hover:bg-emerald-400 transition-colors text-center"
+                                >
+                                    View Projects
+                                </a>
+                                <a
+                                    href="/resume.pdf"
+                                    className="px-8 py-4 border border-white/20 rounded-lg hover:bg-white/5 transition-colors text-center text-zinc-300 hover:text-white"
+                                >
+                                    Download CV
+                                </a>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2, duration: 0.8 }}
+                            className="relative aspect-square md:aspect-[4/5] max-w-md mx-auto"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-2xl -rotate-1 transform" />
+                            {/* USER: Replace 'robin-profile.jpg' in public folder. */}
+                            <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
+                                <div className="absolute inset-0 flex items-center justify-center text-zinc-700 bg-zinc-900">
+                                    [Profile Photo Placeholder]
+                                </div>
+                                <Image
+                                    src="/robin-profile.jpg"
+                                    fill
+                                    alt="Robin Gautam"
+                                    className="object-cover opacity-80 hover:scale-105 transition-transform duration-700"
+                                    priority
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* --- SECTION 2: THE "AI WORKFLOW" STACK --- */}
+                <section className="border-y border-white/5 bg-white/[0.02] overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-6 py-12">
+                        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                            <div className="text-center md:text-left min-w-max">
+                                <h3 className="font-serif text-2xl text-white mb-2">Powered by <br /> Intelligent Infrastructure</h3>
+                                <p className="text-xs text-zinc-500 uppercase tracking-widest">10x Development Velocity</p>
+                            </div>
+
+                            {/* Horizontal Scroll Rail */}
+                            <div className="flex flex-1 overflow-x-auto no-scrollbar gap-4 mask-fade-sides py-2">
+                                <AiIcon name="Cursor" />
+                                <AiIcon name="V0.dev" />
+                                <AiIcon name="Perplexity" />
+                                <AiIcon name="Midjourney" />
+                                <AiIcon name="Supabase AI" />
+                                <AiIcon name="Claude 3.5" />
+                                <AiIcon name="GPT-4o" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SECTION 3: SELECTED WORK (The "Proof of Skills") --- */}
+                <section id="work" className="py-24 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-16 md:flex justify-between items-end">
+                            <div>
+                                <span className="text-emerald-500 font-mono text-xs uppercase tracking-widest mb-2 block">Proof of Skills</span>
+                                <h2 className="font-serif text-4xl md:text-5xl">Selected Work</h2>
+                            </div>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors reveal active">
-                                <div className="text-emerald-500 mb-6 text-xl bg-emerald-500/10 w-14 h-14 flex items-center justify-center rounded-xl">🎓</div>
-                                <h3 className="font-serif text-2xl mb-1">IIM Rohtak</h3>
-                                <div className="text-emerald-500 text-sm mb-4">MBA Graduate</div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                            <ProjectCard
+                                title="Cash Curious"
+                                role="Founder & Lead Engineer"
+                                pitch="Gamifying financial literacy for Gen Alpha. Built with Next.js & Supabase."
+                                metric="Driven by the E-Cell initiative to foster early-age financial habits."
+                                links={{ demo: "https://robingautam.in", repo: "https://github.com" }}
+                                tags={["Next.js", "Supabase", "Gamification"]}
+                            />
+
+                            <ProjectCard
+                                title="QuantMaster"
+                                role="Architect"
+                                pitch="High-frequency quantitative analysis tool for academic research."
+                                metric="Optimized data processing for high-volume financial datasets."
+                                links={{ demo: "#", repo: "#" }}
+                                tags={["Python", "React", "Quantitative Analysis"]}
+                            />
+
+                            <ProjectCard
+                                title="StockGro"
+                                role="Campus Intern & Partner"
+                                pitch="Led financial literacy drives reaching 2,200+ students for India's largest social trading platform."
+                                metric="Secured formal partnership with DSEU."
+                                tags={["Partnerships", "Growth Strategy", "FinTech"]}
+                            />
+
+                            <ProjectCard
+                                title="Corstone"
+                                role="Content & Outreach Intern"
+                                pitch="Formulated digital strategies enhancing website traffic and stakeholder NPS."
+                                metric="Improved stakeholder engagement via strategic content."
+                                tags={["Content Strategy", "Digital Marketing", "NPS"]}
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SECTION 4: LEADERSHIP & ACADEMIC IMPACT (The "MBA" Section) --- */}
+                <section className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-16 text-center max-w-2xl mx-auto">
+                            <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest mb-2 block">Managerial & Strategic</span>
+                            <h2 className="font-serif text-3xl md:text-5xl mb-6">Leadership Impact</h2>
+                            <p className="text-zinc-400">Where data meets decision-making.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {/* Card 1: IIM Rohtak */}
+                            <div className="group p-8 rounded-2xl bg-zinc-900 border border-white/10 hover:border-emerald-500/30 transition-colors">
+                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-emerald-500 mb-6">
+                                    <GraduationCap className="h-6 w-6" />
+                                </div>
+                                <h3 className="font-serif text-2xl mb-2 text-white">IIM Rohtak</h3>
+                                <p className="text-xs font-bold uppercase tracking-wide text-zinc-500 mb-4">Junior Coordinator, IT</p>
                                 <p className="text-zinc-400 text-sm leading-relaxed">
-                                    Specialized in Strategic Management. I don't just speak code; I speak business logic, P&L, and growth strategy.
+                                    Orchestrating IT workshops (Python, PowerBI) and bridging the gap between management and tech.
                                 </p>
                             </div>
-                            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors reveal delay-1 active">
-                                <div className="text-blue-500 mb-6 text-xl bg-blue-500/10 w-14 h-14 flex items-center justify-center rounded-xl">⚡</div>
-                                <h3 className="font-serif text-2xl mb-1">Placement Comm.</h3>
-                                <div className="text-blue-500 text-sm mb-4">Senior Member</div>
+
+                            {/* Card 2: E-Cell President */}
+                            <div className="group p-8 rounded-2xl bg-zinc-900 border border-white/10 hover:border-emerald-500/30 transition-colors">
+                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-emerald-500 mb-6">
+                                    <Building2 className="h-6 w-6" />
+                                </div>
+                                <h3 className="font-serif text-2xl mb-2 text-white">E-Cell President</h3>
+                                <p className="text-xs font-bold uppercase tracking-wide text-zinc-500 mb-4">DSEU (Undergrad)</p>
                                 <p className="text-zinc-400 text-sm leading-relaxed">
-                                    Managed corporate relations and placement strategy for a batch of 240+ students. High stakes stakeholder management.
+                                    Led a 30-member team. Executed 10+ entrepreneurship initiatives. Secured sponsorships for flagship events like 'Riwaaz'.
                                 </p>
                             </div>
-                            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors reveal delay-2 active">
-                                <div className="text-purple-500 mb-6 text-xl bg-purple-500/10 w-14 h-14 flex items-center justify-center rounded-xl">🚀</div>
-                                <h3 className="font-serif text-2xl mb-1">Entrepreneurship</h3>
-                                <div className="text-purple-500 text-sm mb-4">Cell Coordinator</div>
+
+                            {/* Card 3: Placement Coordinator */}
+                            <div className="group p-8 rounded-2xl bg-zinc-900 border border-white/10 hover:border-emerald-500/30 transition-colors">
+                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-emerald-500 mb-6">
+                                    <Users className="h-6 w-6" />
+                                </div>
+                                <h3 className="font-serif text-2xl mb-2 text-white">Placement Coord.</h3>
+                                <p className="text-xs font-bold uppercase tracking-wide text-zinc-500 mb-4">Corporate Relations</p>
                                 <p className="text-zinc-400 text-sm leading-relaxed">
-                                    Led initiatives to foster startup culture. Organized summits, pitch competitions, and mentorship programs.
+                                    Managed hiring processes for 2,000+ students. Built recruiter relations to expand placement opportunities.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Footer */}
                 <Footer />
-
-                <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
             </main>
         </>
     );
