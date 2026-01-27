@@ -10,6 +10,8 @@ import WorkSection from "@/components/WorkSection";
 import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+// Demo modal state hook - imported separately since it's just a hook
+import { useDemoModal } from "@/components/DemoModal";
 
 // Dynamic imports for heavy modals - prevents mobile memory issues
 const BookingModal = dynamic(() => import("@/components/BookingModal"), {
@@ -21,9 +23,6 @@ const DemoModal = dynamic(() => import("@/components/DemoModal"), {
   ssr: false,
   loading: () => null,
 });
-
-// Demo modal state hook - imported separately since it's just a hook
-import { useDemoModal } from "@/components/DemoModal";
 
 export default function Home() {
   // Booking modal state
