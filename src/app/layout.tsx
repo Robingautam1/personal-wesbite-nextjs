@@ -63,6 +63,24 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Robin Gautam',
+  url: 'https://robingautam.in',
+  jobTitle: 'Product Strategist & Developer',
+  alumniOf: 'IIM Rohtak',
+  sameAs: [
+    'https://www.linkedin.com/in/robin-gautam-09b693240',
+    'https://github.com/Robingautam1',
+    'https://twitter.com/robingautam'
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Robin Gautam Studio'
+  }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,6 +89,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#050505] text-white noise-bg overflow-x-hidden`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <GlobalErrorBoundary>
           {children}
         </GlobalErrorBoundary>
