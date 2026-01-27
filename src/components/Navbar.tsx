@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from './auth/AuthProvider';
@@ -20,6 +22,18 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
     const handleSignOut = async () => {
         await supabase.auth.signOut();
         setIsProfileOpen(false);
+    };
+
+    const openCalendly = () => {
+        // @ts-ignore
+        if (window.Calendly) {
+            // @ts-ignore
+            window.Calendly.initPopupWidget({
+                url: 'https://calendly.com/gautam-robin333/30min'
+            });
+            return false;
+        }
+        window.open('https://calendly.com/gautam-robin333/30min', '_blank');
     };
 
     return (
@@ -92,7 +106,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                         )}
 
                         <button
-                            onClick={() => window.open('https://calendly.com/robingautam', '_blank')}
+                            onClick={openCalendly}
                             className="cta-premium px-6 py-3 bg-accent text-white text-sm font-semibold rounded-xl transition-all hover:scale-105 inline-flex items-center gap-2"
                         >
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

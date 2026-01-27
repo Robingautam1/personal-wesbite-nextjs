@@ -12,6 +12,7 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -103,6 +104,9 @@ export default function RootLayout({
         <GlobalErrorBoundary>
           {children}
         </GlobalErrorBoundary>
+
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
       </body>
     </html>
   );

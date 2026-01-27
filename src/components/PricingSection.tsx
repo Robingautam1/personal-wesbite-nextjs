@@ -13,6 +13,18 @@ export default function PricingSection() {
         setIsModalOpen(true);
     };
 
+    const openCalendly = () => {
+        // @ts-ignore
+        if (window.Calendly) {
+            // @ts-ignore
+            window.Calendly.initPopupWidget({
+                url: 'https://calendly.com/gautam-robin333/30min'
+            });
+            return false;
+        }
+        window.open('https://calendly.com/gautam-robin333/30min', '_blank');
+    };
+
     return (
         <section className="bg-dirty-cream text-brand-black border-b-2 border-brand-black">
             <div className="max-w-[1400px] mx-auto min-h-[800px] flex flex-col md:flex-row">
@@ -43,7 +55,7 @@ export default function PricingSection() {
                     </div>
                     <button
                         onClick={() => openBooking("Launchpad")}
-                        className="w-full border-2 border-brand-black py-4 font-bold font-oswald uppercase tracking-widest hover:bg-brand-black hover:text-white transition-colors mt-12"
+                        className="w-full border-2 border-brand-black py-4 font-bold font-oswald uppercase tracking-widest hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors mt-12 relative z-20"
                     >
                         Secure Priority Slot
                     </button>
@@ -122,7 +134,7 @@ export default function PricingSection() {
                             "No recurring fees. You own the code. I build it, deploy it, and hand over the keys."
                         </p>
                         <button
-                            onClick={() => window.open('https://calendly.com/robingautam', '_blank')}
+                            onClick={openCalendly}
                             className="w-full border border-zinc-700 hover:border-white text-zinc-300 hover:text-white py-3 font-bold font-oswald uppercase tracking-widest transition-colors mt-6 text-sm"
                         >
                             Book Consultation
