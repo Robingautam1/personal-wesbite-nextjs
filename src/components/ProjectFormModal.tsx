@@ -49,7 +49,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-lg bg-white border-2 border-brand-black shadow-2xl overflow-hidden"
+                        className="relative w-full max-w-lg bg-white text-brand-black border-2 border-brand-black shadow-2xl overflow-hidden"
                     >
                         {/* Header */}
                         <div className="bg-brand-black text-white p-6 flex justify-between items-start">
@@ -89,7 +89,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                                             <input
                                                 name="name"
                                                 required
-                                                className="w-full bg-zinc-50 border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
+                                                className="w-full bg-zinc-50 text-black border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
                                                 placeholder="John Doe"
                                             />
                                         </div>
@@ -98,7 +98,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                                             <input
                                                 name="contact"
                                                 required
-                                                className="w-full bg-zinc-50 border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
+                                                className="w-full bg-zinc-50 text-black border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
                                                 placeholder="+91 98765..."
                                             />
                                         </div>
@@ -110,7 +110,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                                             name="email"
                                             type="email"
                                             required
-                                            className="w-full bg-zinc-50 border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
+                                            className="w-full bg-zinc-50 text-black border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors"
                                             placeholder="john@company.com"
                                         />
                                     </div>
@@ -121,7 +121,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                                             name="type"
                                             defaultValue={defaultTier}
                                             readOnly
-                                            className="w-full bg-zinc-100 text-zinc-500 border-b-2 border-zinc-200 p-2 cursor-not-allowed font-mono text-sm"
+                                            className="w-full bg-zinc-100 text-zinc-900 border-b-2 border-zinc-200 p-2 cursor-not-allowed font-mono text-sm"
                                         />
                                     </div>
 
@@ -130,7 +130,7 @@ export default function ProjectFormModal({ isOpen, onClose, defaultTier = "Start
                                         <textarea
                                             name="brief"
                                             rows={3}
-                                            className="w-full bg-zinc-50 border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors resize-none"
+                                            className="w-full bg-zinc-50 text-black border-b-2 border-zinc-200 p-2 focus:border-brand-black focus:outline-none transition-colors resize-none"
                                             placeholder="What are we building? (e.g. Portfolio for architecture firm...)"
                                         />
                                     </div>

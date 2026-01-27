@@ -92,7 +92,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                         )}
 
                         <button
-                            onClick={onOpenBooking}
+                            onClick={() => window.open('https://calendly.com/robingautam', '_blank')}
                             className="cta-premium px-6 py-3 bg-accent text-white text-sm font-semibold rounded-xl transition-all hover:scale-105 inline-flex items-center gap-2"
                         >
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

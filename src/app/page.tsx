@@ -200,12 +200,12 @@ export default function Home() {
             </motion.p>
 
             <div className="flex flex-wrap gap-4 mt-12">
-              <button
-                onClick={() => demoModal.openDemo('demo-id-1', 'Agency Portfolio Demo', '$2,500')}
+              <Link
+                href="/work"
                 className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-brand-orange transition-colors"
               >
                 View Latest Work
-              </button>
+              </Link>
               <button
                 onClick={openBooking}
                 className="px-8 py-4 border border-white/20 text-zinc-300 font-bold uppercase tracking-widest hover:bg-white/5 hover:text-white transition-colors"

@@ -18,7 +18,7 @@ export default function PricingSection() {
             <div className="max-w-[1400px] mx-auto min-h-[800px] flex flex-col md:flex-row">
 
                 {/* --- TIER 1: LAUNCHPAD --- */}
-                <div className="flex-1 border-r-2 border-brand-black p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white transition-colors duration-500">
+                <div className="flex-1 border-r-2 border-brand-black p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white hover:text-black transition-colors duration-500">
                     <div>
                         <div className="border-2 border-brand-black px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-8">
                             For Students
@@ -34,8 +34,8 @@ export default function PricingSection() {
                         </p>
                         <ul className="space-y-4 font-bold text-sm uppercase tracking-wide">
                             {["Single Page Site", "Mobile Responsive", "Contact Form", "Basic SEO", "2 Days Delivery"].map((item) => (
-                                <li key={item} className="flex items-center gap-3">
-                                    <Check className="w-4 h-4 text-zinc-400" />
+                                <li key={item} className="flex items-center gap-3 group-hover:text-black">
+                                    <Check className="w-4 h-4 text-zinc-400 group-hover:text-black" />
                                     {item}
                                 </li>
                             ))}
@@ -91,7 +91,7 @@ export default function PricingSection() {
                 </div>
 
                 {/* --- TIER 3: SCALE UP --- */}
-                <div className="flex-1 p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white transition-colors duration-500">
+                <div className="flex-1 p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white hover:text-black transition-colors duration-500">
                     <div>
                         <div className="border-2 border-brand-black px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-8">
                             For Startups
@@ -107,8 +107,8 @@ export default function PricingSection() {
                         </p>
                         <ul className="space-y-4 font-bold text-sm uppercase tracking-wide">
                             {["Full Web App", "Database & Auth", "Payment Gateway", "Custom Dashboard", "Priority Support", "Scalable Arch"].map((item) => (
-                                <li key={item} className="flex items-center gap-3">
-                                    <Check className="w-4 h-4 text-zinc-400" />
+                                <li key={item} className="flex items-center gap-3 group-hover:text-black">
+                                    <Check className="w-4 h-4 text-zinc-400 group-hover:text-black" />
                                     {item}
                                 </li>
                             ))}
@@ -122,7 +122,7 @@ export default function PricingSection() {
                             "No recurring fees. You own the code. I build it, deploy it, and hand over the keys."
                         </p>
                         <button
-                            onClick={() => openBooking("Scale-Up")}
+                            onClick={() => window.open('https://calendly.com/robingautam', '_blank')}
                             className="w-full border border-zinc-700 hover:border-white text-zinc-300 hover:text-white py-3 font-bold font-oswald uppercase tracking-widest transition-colors mt-6 text-sm"
                         >
                             Book Consultation
