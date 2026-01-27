@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DemoModal, { useDemoModal } from "@/components/DemoModal";
 import Link from "next/link";
-import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight, Bot, Terminal, LineChart } from "lucide-react";
 
 // --- Components ---
 
@@ -138,6 +138,60 @@ const PricingCard = ({ tier, price, features, isExpansion, onOpenBooking }: any)
 
 // --- Main Page Component ---
 
+// --- AI Tools Section ---
+const AIToolsSection = () => (
+  <section className="py-20 border-b border-white/10">
+    <div className="max-w-[1400px] mx-auto px-6">
+      <h2 className="text-2xl font-bold uppercase tracking-widest mb-12 flex items-center gap-4">
+        <div className="w-8 h-[2px] bg-brand-orange"></div>
+        Command Center / AI Stack
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { name: "Cursor", icon: Terminal, desc: "AI-First Code Editor" },
+          { name: "V0.dev", icon: Bot, desc: "Generative UI Systems" },
+          { name: "Supabase", icon: Zap, desc: "Postgres Database" },
+          { name: "Resend", icon: LineChart, desc: "Email Infrastructure" }
+        ].map((tool, i) => (
+          <div key={i} className="border border-white/10 bg-white/[0.02] p-6 hover:bg-white/5 transition-colors group">
+            <tool.icon className="w-8 h-8 text-zinc-500 group-hover:text-brand-orange mb-4 transition-colors" />
+            <h3 className="font-bold text-white uppercase tracking-wider">{tool.name}</h3>
+            <p className="text-xs text-zinc-500 font-mono mt-2">{tool.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// --- Profile Teaser ---
+const ProfileTeaser = () => (
+  <section className="py-24 px-6 bg-white text-brand-black">
+    <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">
+          MEET THE <br /> <span className="text-brand-orange">BUILDER.</span>
+        </h2>
+        <p className="text-xl text-zinc-600 max-w-lg mb-8 font-medium">
+          I'm Robin Gautam. An MBA-backed Full Stack Developer who understands that code is pointless without a business model.
+        </p>
+        <Link href="/portfolio" className="inline-flex items-center gap-2 text-lg font-bold uppercase tracking-widest border-b-2 border-brand-black pb-1 hover:gap-4 transition-all">
+          View Full Profile <ArrowUpRight className="w-5 h-5" />
+        </Link>
+      </div>
+      <div className="relative aspect-square md:aspect-[4/3] bg-zinc-100 border-2 border-brand-black overflow-hidden group">
+        <div className="absolute inset-0 bg-brand-orange/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="font-bold text-9xl opacity-5">RG</span>
+        </div>
+        <div className="absolute bottom-6 left-6 z-20">
+          <div className="bg-brand-black text-white px-4 py-2 font-mono text-xs uppercase mb-2 w-fit">Status: Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export default function Home() {
   const [billingMode, setBillingMode] = useState<'essentials' | 'expansion'>('essentials');
   const demoModal = useDemoModal();
@@ -166,7 +220,7 @@ export default function Home() {
             >
               WE BUILD <br />
               <span className="text-brand-orange">SH*T</span> THAT <br />
-              <span className="text-stroke-white text-transparent">WORKS.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-red-600 font-black tracking-tighter animate-pulse">SLAPS.</span>
             </motion.h1>
 
             <motion.p
@@ -218,6 +272,9 @@ export default function Home() {
       {/* TRUST MARQUEE */}
       <TrustMarquee />
 
+      {/* AI TOOLS SEGMENT */}
+      <AIToolsSection />
+
       {/* SERVICES (Bento Grid) */}
       <section className="py-24 px-6 border-b border-white/10">
         <div className="max-w-[1400px] mx-auto">
@@ -267,58 +324,35 @@ export default function Home() {
       <section className="py-24 px-6 bg-white/[0.02]">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8">Invest in Growth.</h2>
-
-            {/* Pill Switch */}
-            <div className="inline-flex items-center bg-white/5 rounded-full p-1 border border-white/10">
-              <button
-                onClick={() => setBillingMode('essentials')}
-                className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${billingMode === 'essentials' ? 'bg-white text-black shadow-lg' : 'text-zinc-500 hover:text-white'
-                  }`}
-              >
-                Essentials
-              </button>
-              <button
-                onClick={() => setBillingMode('expansion')}
-                className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all ${billingMode === 'expansion' ? 'bg-brand-orange text-black shadow-lg' : 'text-zinc-500 hover:text-white'
-                  }`}
-              >
-                Expansion
-              </button>
-            </div>
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-4">Invest in Growth.</h2>
+            <p className="text-zinc-400 font-mono">Transparent pricing. No hidden fees.</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className={billingMode === 'essentials' ? 'block' : 'hidden lg:block opacity-50 blur-sm lg:opacity-100 lg:blur-0 transition-all'}>
-              <PricingCard
-                tier="Launchpad"
-                price="$2,900"
-                features={[
-                  "Single Page Landing Site",
-                  "Next.js + Tailwind CSS",
-                  "SEO Optimization",
-                  "Contact Form Integration",
-                  "1 Week Delivery"
-                ]}
-                isExpansion={false}
-                onOpenBooking={openBooking}
-              />
-            </div>
-            <div className={billingMode === 'expansion' ? 'block' : 'hidden lg:block opacity-50 blur-sm lg:opacity-100 lg:blur-0 transition-all'}>
-              <PricingCard
-                tier="Ecosystem"
-                price="$7,500+"
-                features={[
-                  "Full Stack Web App",
-                  "Auth, Database, Dashboard",
-                  "Stripe Integration",
-                  "Admin Panel",
-                  "4-6 Weeks Delivery"
-                ]}
-                isExpansion={true}
-                onOpenBooking={openBooking}
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+            {/* Starter */}
+            <PricingCard
+              tier="Starter"
+              price="₹8,000"
+              features={["Single Page Site", "Mobile Responsive", "Basic SEO", "Contact Form", "2 Days Delivery"]}
+              isExpansion={false}
+              onOpenBooking={openBooking}
+            />
+            {/* Business */}
+            <PricingCard
+              tier="Business"
+              price="₹15,000"
+              features={["Multi-Page (5 Pages)", "CMS Integration", "Google Analytics", "Speed Optimization", "1 Week Delivery"]}
+              isExpansion={true}
+              onOpenBooking={openBooking}
+            />
+            {/* Brand */}
+            <PricingCard
+              tier="The Brand"
+              price="₹25,000+"
+              features={["Full Web App", "Database & Auth", "Payment Gateway", "Custom Dashboard", "Priority Support"]}
+              isExpansion={false}
+              onOpenBooking={openBooking}
+            />
           </div>
         </div>
       </section>
@@ -330,6 +364,9 @@ export default function Home() {
         title={demoModal.title}
         price={demoModal.price}
       />
+
+      {/* PROFILE TEASER */}
+      <ProfileTeaser />
 
       <Footer />
     </div>
