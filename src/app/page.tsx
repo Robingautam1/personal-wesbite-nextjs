@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DemoModal, { useDemoModal } from "@/components/DemoModal";
 import Link from "next/link";
+import PricingSection from "@/components/PricingSection";
 import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight, Bot, Terminal, LineChart } from "lucide-react";
 
 // --- Components ---
@@ -100,41 +101,7 @@ const ServiceCard = ({ title, desc, icon: Icon, delay }: any) => (
   </motion.div>
 );
 
-const PricingCard = ({ tier, price, features, isExpansion, onOpenBooking }: any) => (
-  <div className={`p-8 md:p-12 border ${isExpansion ? 'border-brand-orange/50 bg-brand-orange/5' : 'border-white/10 bg-white/[0.02]'} relative flex flex-col h-full`}>
-    {isExpansion && (
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-brand-black font-bold px-4 py-1 text-xs uppercase tracking-widest">
-        Most Popular
-      </div>
-    )}
-    <div className="mb-8">
-      <h3 className="text-xl font-mono text-zinc-400 uppercase tracking-widest mb-4">{tier}</h3>
-      <div className="flex items-baseline gap-2">
-        <span className="text-5xl md:text-6xl font-bold text-white">{price}</span>
-        <span className="text-zinc-500 font-mono">/project</span>
-      </div>
-    </div>
 
-    <ul className="space-y-4 mb-12 flex-1">
-      {features.map((feat: string, i: number) => (
-        <li key={i} className="flex items-start gap-3 text-sm md:text-base text-zinc-300">
-          <Check className={`w-5 h-5 ${isExpansion ? 'text-brand-orange' : 'text-zinc-500'} shrink-0`} />
-          {feat}
-        </li>
-      ))}
-    </ul>
-
-    <button
-      onClick={onOpenBooking}
-      className={`w-full py-4 px-6 font-bold uppercase tracking-widest transition-all ${isExpansion
-        ? 'bg-brand-orange text-brand-black hover:bg-white hover:text-black'
-        : 'bg-white text-black hover:bg-zinc-200'
-        }`}
-    >
-      Vibe Check &rarr;
-    </button>
-  </div>
-);
 
 // --- Main Page Component ---
 
@@ -196,8 +163,8 @@ export default function Home() {
   const [billingMode, setBillingMode] = useState<'essentials' | 'expansion'>('essentials');
   const demoModal = useDemoModal();
 
-  // Placeholder for Booking (can be connected to generic contact or modal)
   const openBooking = () => {
+    // Kept for Hero "Start Project" button
     window.location.href = "mailto:hello@robingautam.in";
   }
 
@@ -320,42 +287,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section className="py-24 px-6 bg-white/[0.02]">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-4">Invest in Growth.</h2>
-            <p className="text-zinc-400 font-mono">Transparent pricing. No hidden fees.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
-            {/* Starter */}
-            <PricingCard
-              tier="Starter"
-              price="₹8,000"
-              features={["Single Page Site", "Mobile Responsive", "Basic SEO", "Contact Form", "2 Days Delivery"]}
-              isExpansion={false}
-              onOpenBooking={openBooking}
-            />
-            {/* Business */}
-            <PricingCard
-              tier="Business"
-              price="₹15,000"
-              features={["Multi-Page (5 Pages)", "CMS Integration", "Google Analytics", "Speed Optimization", "1 Week Delivery"]}
-              isExpansion={true}
-              onOpenBooking={openBooking}
-            />
-            {/* Brand */}
-            <PricingCard
-              tier="The Brand"
-              price="₹25,000+"
-              features={["Full Web App", "Database & Auth", "Payment Gateway", "Custom Dashboard", "Priority Support"]}
-              isExpansion={false}
-              onOpenBooking={openBooking}
-            />
-          </div>
-        </div>
-      </section>
+      {/* PRICING SECTION (Split-Screen Industrial) */}
+      <PricingSection />
 
       <DemoModal
         isOpen={demoModal.isOpen}

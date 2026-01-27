@@ -11,8 +11,11 @@ const config: Config = {
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
                 serif: ['Playfair Display', 'Georgia', 'serif'],
+                oswald: ['Oswald', 'sans-serif'],
             },
             colors: {
+                'dirty-cream': '#F4F3EE',
+                'agency-orange': '#F35815',
                 midnight: {
                     950: '#050505',
                     900: '#0a0a0a',

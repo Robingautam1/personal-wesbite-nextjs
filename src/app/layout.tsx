@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Oswald, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import GlobalErrorBoundary from "@/components/GlobalErrorBoundary";
 
@@ -25,6 +25,13 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "600", "700"],
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -88,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-[#050505] text-white noise-bg overflow-x-hidden`}>
+      <body className={`${inter.variable} ${playfair.variable} ${oswald.variable} font-sans antialiased bg-[#050505] text-white noise-bg overflow-x-hidden`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
