@@ -124,33 +124,7 @@ const ArsenalSection = () => (
     </section>
 );
 
-// --- Profile Teaser ---
-const ProfileTeaser = () => (
-    <section className="py-24 px-6 bg-white text-brand-black">
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">
-                    MEET THE <br /> <span className="text-brand-orange">BUILDER.</span>
-                </h2>
-                <p className="text-xl text-zinc-600 max-w-lg mb-8 font-medium">
-                    I'm Robin Gautam. An MBA-backed Full Stack Developer who understands that code is pointless without a business model.
-                </p>
-                <Link href="/portfolio" className="inline-flex items-center gap-2 text-lg font-bold uppercase tracking-widest border-b-2 border-brand-black pb-1 hover:gap-4 transition-all">
-                    View Full Profile <ArrowUpRight className="w-5 h-5" />
-                </Link>
-            </div>
-            <div className="relative aspect-square md:aspect-[4/3] bg-zinc-100 border-2 border-brand-black overflow-hidden group">
-                <div className="absolute inset-0 bg-brand-orange/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-bold text-9xl opacity-5">RG</span>
-                </div>
-                <div className="absolute bottom-6 left-6 z-20">
-                    <div className="bg-brand-black text-white px-4 py-2 font-mono text-xs uppercase mb-2 w-fit">Status: Available</div>
-                </div>
-            </div>
-        </div>
-    </section>
-);
+
 
 import { useProjectModal } from "@/context/ProjectModalContext";
 
@@ -246,7 +220,7 @@ export default function DesktopExperience() {
             <PricingSection />
 
             {/* PROFILE TEASER */}
-            <ProfileTeaser />
+
 
             <Footer />
         </div>
