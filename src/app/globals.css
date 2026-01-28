@@ -378,15 +378,9 @@
     width: 100% !important;
     max-width: calc(100vw - 2rem) !important;
   }
+}
 
-  @media (max-width: 640px) {
-    .float-3d .glass-card {
-      width: 100% !important;
-      max-width: calc(100vw - 2rem) !important;
-    }
-  }
-
-  .stroke-text-black {
-    -webkit-text-stroke: 2px black;
-    color: transparent;
-  }
+.stroke-text-black {
+  -webkit-text-stroke: 2px black;
+  color: transparent;
+}
