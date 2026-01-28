@@ -34,8 +34,8 @@ export async function submitQuote(formData: FormData): Promise<ActionResponse> {
 
     // 2. Send Email Notification
     try {
-        await resend.emails.send({
-            from: 'Portfolio Bot <onboarding@resend.dev>', // Or verified domain
+        const { error } = await resend.emails.send({
+            from: 'Portfolio Bot <onboarding@resend.dev>',
             to: 'hello@robingautam.in',
             subject: `🔥 New Lead: ${name} (${budget})`,
             html: `
@@ -47,9 +47,15 @@ export async function submitQuote(formData: FormData): Promise<ActionResponse> {
         <p><strong>Details:</strong><br/>${details}</p>
       `
         })
+
+        if (error) {
+            console.error('Resend API Error:', error);
+            return { success: true, message: 'Quote saved, but email failed: ' + error.message };
+        }
+
     } catch (emailError) {
-        console.error('Email Error:', emailError)
-        // Non-blocking error
+        console.error('Email Execution Error:', emailError);
+        return { success: true, message: 'Quote saved, but email failed to send.' };
     }
 
     return { success: true, message: 'Quote received!' }
