@@ -33,9 +33,9 @@ const SystemStatusTicker = () => {
     return (
         <div className="flex flex-col gap-2 font-mono text-xs md:text-sm text-zinc-500">
             {statuses.map((item, i) => (
-                <div key={i} className="flex flex-col xs:flex-row xs:justify-between xs:items-center border-b border-white/5 pb-2 gap-1">
+                <div key={i} className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/5 pb-2 gap-1">
                     <span>{item.label}</span>
-                    <span className={`font-bold ${item.color} tracking-wider self-end xs:self-auto`}>[ {item.status} ]</span>
+                    <span className={`font-bold ${item.color} tracking-wider self-start sm:self-auto`}>[ {item.status} ]</span>
                 </div>
             ))}
         </div>
@@ -161,7 +161,7 @@ export default function DesktopExperience() {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.8 }}
-                            className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-bold leading-[0.9] tracking-tighter mb-8 break-words"
+                            className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-bold leading-[0.9] tracking-tighter mb-8 break-words max-w-full"
                         >
                             WE BUILD <br />
                             <span className="text-brand-orange">SH*T</span> THAT <br />
@@ -172,7 +172,7 @@ export default function DesktopExperience() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="text-lg md:text-xl text-zinc-400 max-w-xl font-mono"
+                            className="text-lg md:text-xl text-zinc-400 max-w-xl font-mono break-words"
                         >
                             High-impact digital product studio. We turn napkin sketches into revenue engines. No fluff. Just code & strategy.
                         </motion.p>
@@ -199,7 +199,7 @@ export default function DesktopExperience() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="w-full bg-white/[0.03] border border-white/10 p-5 md:p-8 opacity-80 scale-95 origin-right"
+                        className="w-full bg-white/[0.03] border border-white/10 p-5 md:p-8 opacity-80 md:scale-95 md:origin-right max-w-full"
                     >
                         <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                             <span className="font-mono text-xs text-brand-orange uppercase tracking-widest">System Status</span>
