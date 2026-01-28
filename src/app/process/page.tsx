@@ -46,7 +46,7 @@ const cards = [
         copy: "We don't hold your site hostage. I set up your analytics, configure your SEO, and hand over the repo keys. You walk away with a digital weapon, not just a website.",
         metric: "OUTPUT: FULL ADMIN ACCESS",
         icon: Key,
-        color: "bg-agency-orange text-white",
+        color: "bg-[#F35815] text-white",
         dark: true
     },
 ];
@@ -132,7 +132,7 @@ export default function ProcessPage() {
             {/* Navigation & Branding */}
             <nav className="fixed top-0 left-0 right-0 p-6 md:p-8 flex justify-between items-center z-50 pointer-events-none mix-blend-difference text-white">
                 <Link href="/" className="pointer-events-auto group flex items-center gap-2 font-oswald text-2xl font-bold uppercase tracking-tighter">
-                    <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-sm group-hover:bg-agency-orange transition-colors">
+                    <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-sm group-hover:bg-[#F35815] transition-colors">
                         <ArrowLeft className="w-5 h-5" />
                     </div>
                     <span>Back to Base</span>
@@ -152,7 +152,7 @@ export default function ProcessPage() {
                     <h1 className="font-oswald text-[15vw] md:text-[12vw] leading-[0.8] font-bold uppercase tracking-tighter text-black mb-12">
                         The<br /><span className="text-transparent stroke-text-black opacity-50">Protocol.</span>
                     </h1>
-                    <div className="max-w-2xl border-l-4 border-agency-orange pl-8 space-y-4">
+                    <div className="max-w-2xl border-l-4 border-[#F35815] pl-8 space-y-4">
                         <p className="font-mono text-xl md:text-2xl text-black font-medium leading-relaxed">
                             We don't guess. We engineer outcome.
                         </p>
@@ -204,7 +204,7 @@ export default function ProcessPage() {
 
                     <button
                         onClick={openProjectModal}
-                        className="group relative inline-flex items-center gap-4 px-12 py-6 bg-agency-orange text-white font-oswald text-2xl font-bold uppercase tracking-widest border-4 border-white hover:bg-white hover:text-black transition-all"
+                        className="group relative inline-flex items-center gap-4 px-12 py-6 bg-[#F35815] text-white font-oswald text-2xl font-bold uppercase tracking-widest border-4 border-white hover:bg-white hover:text-black transition-all"
                     >
                         <span>Initiate Protocol</span>
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
