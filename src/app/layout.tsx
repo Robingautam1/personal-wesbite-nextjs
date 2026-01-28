@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Oswald, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import GlobalErrorBoundary from "@/components/GlobalErrorBoundary";
+import { ProjectModalProvider } from "@/context/ProjectModalContext";
+import StartProjectModal from "@/components/StartProjectModal";
 
 // Font imports
 import "@fontsource/playfair-display/400.css";
@@ -102,7 +104,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <GlobalErrorBoundary>
-          {children}
+          <ProjectModalProvider>
+            {children}
+            <StartProjectModal />
+          </ProjectModalProvider>
         </GlobalErrorBoundary>
 
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />

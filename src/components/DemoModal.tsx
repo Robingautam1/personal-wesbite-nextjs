@@ -3,13 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface DemoModalProps {
     isOpen: boolean;
     onClose: () => void;
     demoId: string | null;
     title: string;
-    price?: string;
 }
 
 export default function DemoModal({
@@ -17,9 +17,14 @@ export default function DemoModal({
     onClose,
     demoId,
     title,
-    price,
 }: DemoModalProps) {
     const [isLoading, setIsLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     // Esc key listener
     useEffect(() => {
@@ -41,11 +46,12 @@ export default function DemoModal({
         if (isOpen) setIsLoading(true);
     }, [isOpen]);
 
-    // Construct demo URL (using a placeholder or specific logic if needed)
-    // For now, assuming demoId maps to a route or external URL
+    // Construct demo URL
     const demoUrl = demoId ? `/demos/${demoId}` : null;
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -79,7 +85,6 @@ export default function DemoModal({
                                     <div className="h-6 w-px bg-white/10 mx-2" />
                                     <div>
                                         <h3 className="text-white font-medium text-sm tracking-wide">{title}</h3>
-                                        {price && <span className="text-brand-orange text-xs font-mono">{price}</span>}
                                     </div>
                                 </div>
 
@@ -129,21 +134,20 @@ export default function DemoModal({
                     </motion.div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }
 
-// Custom Hook for easier usage in page.tsx
+// Custom Hook for easier usage
 export function useDemoModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [demoId, setDemoId] = useState<string | null>(null);
     const [title, setTitle] = useState("");
-    const [price, setPrice] = useState("");
 
-    const openDemo = (id: string, demoTitle: string, demoPrice?: string) => {
+    const openDemo = (id: string, demoTitle: string) => {
         setDemoId(id);
         setTitle(demoTitle);
-        setPrice(demoPrice || "");
         setIsOpen(true);
     };
 
@@ -153,9 +157,8 @@ export function useDemoModal() {
         setTimeout(() => {
             setDemoId(null);
             setTitle("");
-            setPrice("");
         }, 300);
     };
 
-    return { isOpen, demoId, title, price, openDemo, closeDemo };
+    return { isOpen, demoId, title, openDemo, closeDemo };
 }
