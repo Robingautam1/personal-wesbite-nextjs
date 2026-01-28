@@ -85,7 +85,7 @@ export default function DemosSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group bg-white border-2 border-black p-8 hover:-translate-y-2 hover:bg-[#F35815] hover:text-white transition-all duration-300 flex flex-col h-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                            className="group bg-white text-black border-2 border-black p-8 hover:-translate-y-2 hover:bg-[#F35815] hover:text-white transition-all duration-300 flex flex-col h-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
                         >
                             <div className="flex justify-between items-start mb-6">
                                 <span className="font-mono text-xs border border-black px-2 py-1 uppercase bg-dirty-cream text-black group-hover:bg-white group-hover:border-white group-hover:text-agency-orange transition-colors">
