@@ -1,144 +1,158 @@
 "use client";
 
-import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 import { useProjectModal } from "@/context/ProjectModalContext";
+
+const tiers = [
+    {
+        name: "THE IDENTITY",
+        price: "7,999",
+        target: "Consultants, Creators & Personal Brands.",
+        description: "Your digital business card, on steroids.",
+        features: [
+            "High-Performance One-Pager",
+            "Social Proof Integration",
+            "Lead Capture System",
+            "Auto-Reply Setup",
+            "Delivered in 48 hours"
+        ],
+        cta: "SECURE SLOT",
+        highlight: false,
+        color: "bg-white"
+    },
+    {
+        name: "THE GROWTH ENGINE",
+        price: "14,999",
+        target: "Clinics, Agencies & Local Business.",
+        description: "The complete package to dominate your local market.",
+        features: [
+            "5-Page Content Strategy",
+            "CMS Integration (Self-Edit)",
+            "WhatsApp CRM Button",
+            "Local SEO Setup",
+            "Includes 1-hour training video"
+        ],
+        cta: "START GROWTH",
+        highlight: true,
+        color: "bg-white"
+    },
+    {
+        name: "THE ECOSYSTEM",
+        price: "29,999+",
+        target: "SaaS, E-com & Startups.",
+        description: "Custom architecture for businesses that need to scale.",
+        features: [
+            "Custom Web App Architecture",
+            "User Authentication Flows",
+            "Payment Gateway (Razorpay/Stripe)",
+            "Admin Dashboard",
+            "Scales to 10k+ users"
+        ],
+        cta: "BOOK STRATEGY",
+        highlight: false,
+        color: "bg-zinc-50"
+    }
+];
 
 export default function PricingSection() {
     const { openProjectModal } = useProjectModal();
-    const [selectedTier, setSelectedTier] = useState("Business");
-
-    const openBooking = (tier: string) => {
-        setSelectedTier(tier);
-        openProjectModal();
-    };
-
-    const openCalendly = () => {
-        // @ts-ignore
-        if (window.Calendly) {
-            // @ts-ignore
-            window.Calendly.initPopupWidget({
-                url: 'https://calendly.com/gautam-robin333/30min'
-            });
-            return false;
-        }
-        window.open('https://calendly.com/gautam-robin333/30min', '_blank');
-    };
 
     return (
-        <section className="bg-dirty-cream text-brand-black border-b-2 border-brand-black">
-            <div className="max-w-[1400px] mx-auto min-h-[800px] flex flex-col md:flex-row">
+        <section id="work" className="bg-[#F4F3EE] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
 
-                {/* --- TIER 1: LAUNCHPAD --- */}
-                <div className="flex-1 border-r-2 border-brand-black p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white hover:text-black transition-colors duration-500">
-                    <div>
-                        <div className="border-2 border-brand-black px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-8">
-                            For Students
-                        </div>
-                        <h3 className="font-oswald text-4xl md:text-5xl font-bold uppercase mb-4">
-                            The <br /> Launchpad
-                        </h3>
-                        <div className="text-4xl md:text-5xl font-bold font-oswald mb-8">
-                            ₹8k
-                        </div>
-                        <p className="text-zinc-600 font-medium leading-relaxed mb-8">
-                            Perfect for personal portfolios, landing pages, and side projects. Minimalist, fast, and SEO-ready.
-                        </p>
-                        <ul className="space-y-4 font-bold text-sm uppercase tracking-wide">
-                            {["Single Page Site", "Mobile Responsive", "Contact Form", "Basic SEO", "2 Days Delivery"].map((item) => (
-                                <li key={item} className="flex items-center gap-3 group-hover:text-black">
-                                    <Check className="w-4 h-4 text-zinc-400 group-hover:text-black" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <button
-                        onClick={() => openBooking("Launchpad")}
-                        className="w-full border-2 border-brand-black py-4 font-bold font-oswald uppercase tracking-widest hover:bg-brand-black hover:text-white hover:border-brand-black transition-colors mt-12 relative z-20"
-                    >
-                        Secure Priority Slot
-                    </button>
-                </div>
+            {/* Background Grid */}
+            <div className="absolute inset-0 opacity-30"
+                style={{ backgroundImage: 'radial-gradient(#000000 1px, transparent 1px)', backgroundSize: '20px 20px' }}
+            />
 
-                {/* --- TIER 2: BUSINESS (HIGHLIGHT) --- */}
-                <div className="flex-1 bg-agency-orange text-white border-r-2 border-brand-black p-8 md:p-12 flex flex-col justify-between relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-black text-white px-4 py-2 font-mono text-xs font-bold uppercase z-10">
-                        Most Popular
+            <div className="max-w-7xl mx-auto relative z-10">
+
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 text-black">
+                    {/* --- Sidebar: The Raw Truth --- */}
+                    <div className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 h-fit">
+                        <h2 className="font-oswald text-6xl uppercase leading-[0.9] font-bold tracking-tighter">
+                            Pure<br />Value.<br />No Fluff.
+                        </h2>
+                        <div className="space-y-6">
+                            <div className="border-l-4 border-[#F35815] pl-6 py-2">
+                                <h3 className="font-mono font-bold uppercase tracking-widest text-sm mb-2">The Raw Truth</h3>
+                                <p className="font-mono text-base font-bold leading-relaxed">
+                                    NO MONTHLY RENT.<br />
+                                    You own the code.<br />
+                                    I build it, I hand over the keys.<br />
+                                    Zero lock-in.
+                                </p>
+                            </div>
+                            <p className="font-sans text-zinc-600 text-sm leading-relaxed">
+                                Stick to the budget. Validate the idea first. Scale when the revenue hits. These packages are engineered to get you to "Proof of Concept" fast.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Industrial Stamp */}
-                    <div className="absolute -right-8 top-32 text-black/10 font-oswald font-bold text-9xl rotate-90 pointer-events-none select-none whitespace-nowrap">
-                        JAN BATCH
-                    </div>
+                    {/* --- Pricing Cards Grid --- */}
+                    <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {tiers.map((tier, index) => (
+                            <div
+                                key={index}
+                                className={`
+                                    relative flex flex-col justify-between
+                                    ${tier.color} text-black
+                                    border-2 border-black
+                                    p-8
+                                    transition-all duration-300
+                                    hover:border-4 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1
+                                `}
+                            >
+                                {tier.highlight && (
+                                    <div className="absolute -top-4 right-4 bg-[#F35815] text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                                        Most Popular
+                                    </div>
+                                )}
 
-                    <div className="relative z-10">
-                        <div className="border-2 border-white px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-8 text-black bg-white">
-                            For Agencies
-                        </div>
-                        <h3 className="font-oswald text-5xl md:text-6xl font-bold uppercase mb-4 leading-none">
-                            The <br /> Business
-                        </h3>
-                        <div className="text-5xl md:text-6xl font-bold font-oswald mb-8">
-                            ₹15k
-                        </div>
-                        <p className="text-white/90 font-medium leading-relaxed mb-8 text-lg">
-                            The complete package. Multi-page website with CMS, analytics, and speed optimization. Built to convert.
-                        </p>
-                        <ul className="space-y-4 font-bold text-sm uppercase tracking-wide">
-                            {["5 Page Website", "CMS Integration", "Google Analytics", "Speed Optimization", "1 Week Delivery", "WhatsApp Support"].map((item) => (
-                                <li key={item} className="flex items-center gap-3">
-                                    <Check className="w-5 h-5 text-black" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <button
-                        onClick={() => openBooking("Business")}
-                        className="w-full bg-black text-white py-5 font-bold font-oswald uppercase tracking-widest hover:bg-white hover:text-black hover:translate-x-1 hover:-translate-y-1 transition-all border-2 border-black mt-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
-                    >
-                        Start Project
-                    </button>
-                </div>
+                                {/* Card Header */}
+                                <div className="space-y-4 mb-8">
+                                    <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-500">
+                                        {tier.name}
+                                    </h3>
+                                    <div className="font-oswald text-5xl font-bold tracking-tight flex items-baseline gap-1">
+                                        <span className="text-xl font-sans font-normal text-zinc-500">₹</span>
+                                        {tier.price}
+                                    </div>
+                                    <p className="font-mono text-sm font-bold border-b-2 border-black pb-4">
+                                        {tier.target}
+                                    </p>
+                                    <p className="font-sans text-sm text-zinc-600 leading-snug">
+                                        {tier.description}
+                                    </p>
+                                </div>
 
-                {/* --- TIER 3: SCALE UP --- */}
-                <div className="flex-1 p-8 md:p-12 flex flex-col justify-between relative group hover:bg-white hover:text-black transition-colors duration-500">
-                    <div>
-                        <div className="border-2 border-brand-black px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-8">
-                            For Startups
-                        </div>
-                        <h3 className="font-oswald text-4xl md:text-5xl font-bold uppercase mb-4">
-                            The <br /> Scale-Up
-                        </h3>
-                        <div className="text-4xl md:text-5xl font-bold font-oswald mb-8">
-                            ₹25k+
-                        </div>
-                        <p className="text-zinc-600 font-medium leading-relaxed mb-8">
-                            Full-stack web applications. Database, Authentication, Payments, and custom Admin Dashboards.
-                        </p>
-                        <ul className="space-y-4 font-bold text-sm uppercase tracking-wide">
-                            {["Full Web App", "Database & Auth", "Payment Gateway", "Custom Dashboard", "Priority Support", "Scalable Arch"].map((item) => (
-                                <li key={item} className="flex items-center gap-3 group-hover:text-black">
-                                    <Check className="w-4 h-4 text-zinc-400 group-hover:text-black" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                                {/* Features List */}
+                                <ul className="space-y-4 mb-8 flex-1">
+                                    {tier.features.map((feature, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm font-medium">
+                                            <Check className="w-5 h-5 text-[#F35815] shrink-0" strokeWidth={3} />
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
-                    {/* Inverted Bottom Block */}
-                    <div className="bg-brand-black text-white p-6 -mx-8 -mb-12 md:-mb-12 mt-12 pb-12">
-                        <p className="font-mono text-xs text-zinc-500 mb-4 uppercase">Raw Truth:</p>
-                        <p className="text-sm font-medium leading-relaxed">
-                            "No recurring fees. You own the code. I build it, deploy it, and hand over the keys."
-                        </p>
-                        <button
-                            onClick={openCalendly}
-                            className="w-full border border-zinc-700 hover:border-white text-zinc-300 hover:text-white py-3 font-bold font-oswald uppercase tracking-widest transition-colors mt-6 text-sm"
-                        >
-                            Book Consultation
-                        </button>
+                                {/* CTA Button */}
+                                <button
+                                    onClick={openProjectModal}
+                                    className={`
+                                        w-full py-4 
+                                        font-oswald text-lg font-bold uppercase tracking-widest
+                                        border-2 border-black
+                                        bg-transparent hover:bg-black hover:text-white
+                                        transition-all flex items-center justify-center gap-2
+                                        group
+                                    `}
+                                >
+                                    {tier.cta}
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
