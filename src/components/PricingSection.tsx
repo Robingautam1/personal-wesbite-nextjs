@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { Check } from "lucide-react";
-import ProjectFormModal from "./ProjectFormModal";
+import { useProjectModal } from "@/context/ProjectModalContext";
 
 export default function PricingSection() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { openProjectModal } = useProjectModal();
     const [selectedTier, setSelectedTier] = useState("Business");
 
     const openBooking = (tier: string) => {
         setSelectedTier(tier);
-        setIsModalOpen(true);
+        openProjectModal();
     };
 
     const openCalendly = () => {
@@ -142,13 +142,6 @@ export default function PricingSection() {
                     </div>
                 </div>
             </div>
-
-            {/* MODAL */}
-            <ProjectFormModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                defaultTier={selectedTier}
-            />
         </section>
     );
 }
