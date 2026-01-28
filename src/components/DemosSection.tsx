@@ -71,7 +71,7 @@ export default function DemosSection() {
                             Experimental prototypes and engineered assets. Not templates, but capabilities.
                         </p>
                     </div>
-                    <div className="font-mono text-xs uppercase tracking-widest border border-black px-4 py-2 bg-white text-black">
+                    <div className="font-mono text-xs uppercase tracking-widest border border-black px-4 py-2 bg-white">
                         System Status: Operational
                     </div>
                 </div>
