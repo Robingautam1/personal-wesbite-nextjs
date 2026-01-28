@@ -20,7 +20,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8">
-                        <Link href="/#process" className="text-sm text-zinc-400 hover:text-white transition-colors">Process</Link>
+                        <Link href="/process" className="text-sm text-zinc-400 hover:text-white transition-colors">Process</Link>
                         <Link href="/#work" className="text-sm text-zinc-400 hover:text-white transition-colors">Work</Link>
                         <Link href="/portfolio" className="text-sm text-zinc-400 hover:text-white transition-colors">About</Link>
                     </div>
