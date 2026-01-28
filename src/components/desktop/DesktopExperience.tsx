@@ -209,7 +209,7 @@ export default function DesktopExperience() {
 
                         <div className="mt-8 pt-6 border-t border-white/10">
                             <p className="text-xs text-zinc-500 font-mono mb-2">// LATEST DEPLOY</p>
-                            <p className="font-mono text-xs md:text-sm text-white truncate">983e2cf - Revert "Pivot to High-Impact Portfolio"</p>
+                            <p className="font-mono text-xs md:text-sm text-white break-words whitespace-normal">983e2cf - Revert "Pivot to High-Impact Portfolio"</p>
                         </div>
                     </motion.div>
                 </div>
