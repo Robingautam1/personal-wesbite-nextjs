@@ -57,20 +57,20 @@ const TrustMarquee = () => {
     ];
 
     return (
-        <div className="border-y border-white/10 bg-brand-black py-12 overflow-hidden relative" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+        <div className="border-y border-white/10 bg-brand-black py-10 overflow-hidden relative" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
             <motion.div
                 className="flex whitespace-nowrap items-center"
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                transition={{ repeat: Infinity, duration: 32, ease: "linear" }}
             >
                 {[...items, ...items, ...items, ...items].map((item, i) => (
                     <span
                         key={i}
-                        className={`mx-8 text-6xl md:text-8xl font-oswald font-bold uppercase tracking-tighter ${item.style === "outline"
-                                ? "text-transparent stroke-text"
-                                : item.style === "separator"
-                                    ? "text-[#F35815] text-4xl md:text-6xl"
-                                    : "text-[#F4F3EE]"
+                        className={`mx-8 text-5xl md:text-7xl font-oswald font-bold uppercase tracking-tighter ${item.style === "outline"
+                            ? "text-transparent stroke-text"
+                            : item.style === "separator"
+                                ? "text-[#F35815] text-3xl md:text-5xl"
+                                : "text-[#F4F3EE]"
                             }`}
                     >
                         {item.text}
