@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import PricingSection from "@/components/PricingSection";
 import DemosSection from "@/components/DemosSection";
-import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight, Bot, Terminal, LineChart } from "lucide-react";
+import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight, Bot, Terminal, LineChart, FolderOpen } from "lucide-react";
 
 // --- Components ---
 
@@ -100,7 +100,7 @@ const ServiceCard = ({ title, desc, icon: Icon, delay }: any) => (
 // --- AI Tools Section ---
 // --- Arsenal / Services Section ---
 const ArsenalSection = () => (
-    <section className="py-20 border-b border-white/10">
+    <section className="py-24 border-b border-white/10">
         <div className="max-w-[1400px] mx-auto px-6">
             <h2 className="text-2xl font-bold uppercase tracking-widest mb-12 flex items-center gap-4">
                 <div className="w-8 h-[2px] bg-brand-orange"></div>
@@ -176,9 +176,10 @@ export default function DesktopExperience() {
                             </Link>
                             <button
                                 onClick={openProjectModal}
-                                className="px-6 py-3 md:px-8 md:py-4 border border-white/20 text-zinc-300 font-bold uppercase tracking-widest hover:bg-white/5 hover:text-white transition-colors text-sm md:text-base"
+                                className="px-6 py-3 md:px-8 md:py-4 border border-white/20 text-zinc-300 font-bold uppercase tracking-widest hover:bg-white/5 hover:text-white transition-colors text-sm md:text-base flex items-center gap-3"
                             >
-                                Start Project
+                                <FolderOpen className="w-5 h-5" />
+                                <span>Start Project</span>
                             </button>
                         </div>
                     </div>

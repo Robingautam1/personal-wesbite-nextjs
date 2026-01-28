@@ -59,7 +59,7 @@ export default function DemosSection() {
     const { isOpen, demoId, title, openDemo, closeDemo } = useDemoModal();
 
     return (
-        <section className="py-24 bg-dirty-cream border-t border-black text-black">
+        <section className="py-24 bg-[#121212] border-t border-white/10 text-[#F4F3EE]">
             <div className="container mx-auto px-4 max-w-[1400px]">
                 {/* Header */}
                 <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-black pb-8">

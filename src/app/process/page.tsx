@@ -187,6 +187,14 @@ export default function ProcessPage() {
                 })}
             </section>
 
+            {/* Connector Visual */}
+            <div className="flex flex-col items-center justify-center pb-20 opacity-60">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F35815] mb-4">Protocol Complete</span>
+                <div className="animate-bounce">
+                    <ArrowLeft className="w-6 h-6 text-[#F35815] -rotate-90" />
+                </div>
+            </div>
+
             {/* Footer / CTA Section */}
             <section className="bg-black text-white min-h-[50vh] flex flex-col items-center justify-center text-center p-8 space-y-12 relative overflow-hidden">
                 {/* Background Grid */}
