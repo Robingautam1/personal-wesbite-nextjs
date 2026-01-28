@@ -39,12 +39,13 @@ export async function submitQuote(formData: FormData): Promise<ActionResponse> {
             to: 'hello@robingautam.in',
             subject: `🔥 New Lead: ${name} (${budget})`,
             html: `
-        <h1>New Project Request</h1>
+        <h1>🚀 New Project Intake</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Budget:</strong> ${budget}</p>
-        <p><strong>Details:</strong><br/>${details}</p>
+        <hr/>
+        <p><strong>Business Target:</strong> ${service}</p>
+        <p><strong>Project Stage:</strong> ${budget}</p>
+        <p><strong>Intake Details:</strong><br/>${details.replace(/\n/g, '<br/>')}</p>
       `
         })
 
