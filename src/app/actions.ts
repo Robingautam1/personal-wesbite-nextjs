@@ -35,7 +35,7 @@ export async function submitQuote(formData: FormData): Promise<ActionResponse> {
     // 2. Send Email Notification
     try {
         const { error } = await resend.emails.send({
-            from: 'Portfolio Bot <onboarding@resend.dev>',
+            from: 'Portfolio Bot <hello@robingautam.in>',
             to: 'hello@robingautam.in',
             subject: `🔥 New Lead: ${name} (${budget})`,
             html: `
