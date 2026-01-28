@@ -43,33 +43,43 @@ const SystemStatusTicker = () => {
 };
 
 const TrustMarquee = () => {
+    const items = [
+        { text: "REVENUE ARCHITECTURE", style: "solid" },
+        { text: "///", style: "separator" },
+        { text: "PRODUCTION GRADE", style: "outline" },
+        { text: "///", style: "separator" },
+        { text: "SYSTEMS INTEGRITY", style: "solid" },
+        { text: "///", style: "separator" },
+        { text: "CAPITAL EFFICIENT", style: "outline" },
+        { text: "///", style: "separator" },
+        { text: "ZERO TECHNICAL DEBT", style: "solid" },
+        { text: "///", style: "separator" },
+    ];
+
     return (
-        <div className="border-y border-white/10 bg-brand-black py-6 overflow-hidden relative">
+        <div className="border-y border-white/10 bg-brand-black py-12 overflow-hidden relative" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
             <motion.div
-                className="flex whitespace-nowrap gap-16"
-                animate={{ x: [0, -1000] }}
-                transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+                className="flex whitespace-nowrap items-center"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
             >
-                {[1, 2, 3, 4].map((key) => (
-                    <div key={key} className="flex items-center gap-16">
-                        <span className="text-xl md:text-3xl font-bold text-transparent stroke-text uppercase tracking-tighter opacity-30">
-                            Strategy × Execution
-                        </span>
-                        <span className="text-xl md:text-3xl font-bold text-white uppercase tracking-tighter">
-                            Build Fast. Scale Hard.
-                        </span>
-                        <span className="text-xl md:text-3xl font-bold text-transparent stroke-text uppercase tracking-tighter opacity-30">
-                            MBA-Backed Engineering
-                        </span>
-                        <span className="text-xl md:text-3xl font-bold text-brand-orange uppercase tracking-tighter">
-                            WE SHIP.
-                        </span>
-                    </div>
+                {[...items, ...items, ...items, ...items].map((item, i) => (
+                    <span
+                        key={i}
+                        className={`mx-8 text-6xl md:text-8xl font-oswald font-bold uppercase tracking-tighter ${item.style === "outline"
+                                ? "text-transparent stroke-text"
+                                : item.style === "separator"
+                                    ? "text-[#F35815] text-4xl md:text-6xl"
+                                    : "text-[#F4F3EE]"
+                            }`}
+                    >
+                        {item.text}
+                    </span>
                 ))}
             </motion.div>
             <style jsx>{`
         .stroke-text {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+            -webkit-text-stroke: 2px white;
         }
       `}</style>
         </div>
