@@ -33,6 +33,9 @@ export default function WorkPage() {
 
             <main className="pt-32 pb-24 px-6 md:px-12 max-w-[1400px] mx-auto">
                 <div className="mb-16 border-b border-white/10 pb-8">
+                    <Link href="/" className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-zinc-500 hover:text-white mb-8 transition-colors">
+                        ← Back to Home
+                    </Link>
                     <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-6">
                         Latest <span className="text-brand-orange">Work</span>.
                     </h1>

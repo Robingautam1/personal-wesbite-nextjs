@@ -106,7 +106,7 @@ export default function StartProjectModal() {
                         transition={{ type: "spring", damping: 30, stiffness: 300 }}
                         className="fixed top-0 right-0 h-full w-full md:w-[600px] bg-white border-l-4 border-black shadow-[-12px_0px_0px_0px_rgba(0,0,0,1)] z-[70] p-8 md:p-12 overflow-y-auto"
                     >
-                        <div className="flex justify-between items-center mb-12 border-b-2 border-black pb-6">
+                        <div className="sticky top-0 bg-white z-50 flex justify-between items-center mb-8 border-b-2 border-black pb-6 pt-2">
                             <h2 className="font-oswald text-4xl font-bold uppercase tracking-tighter text-black">
                                 Project Intake
                             </h2>
@@ -131,9 +131,15 @@ export default function StartProjectModal() {
                                     <h3 className="font-oswald text-4xl font-bold uppercase mb-4 text-black">Brief Transmitted.</h3>
                                     <p className="font-mono text-lg text-zinc-600 font-bold">DEPLOYING RESPONSE PROTOCOL (24H).</p>
                                 </div>
+                                <button
+                                    onClick={closeProjectModal}
+                                    className="mt-8 font-mono text-sm underline text-zinc-500 hover:text-black"
+                                >
+                                    [ CLOSE WINDOW ]
+                                </button>
                             </motion.div>
                         ) : (
-                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 pb-8">
 
                                 {/* IDENTITY */}
                                 <div className="space-y-6">
@@ -253,22 +259,32 @@ export default function StartProjectModal() {
                                     {errors.goal && <span className="text-red-600 text-xs font-bold tracking-wide uppercase">{errors.goal.message}</span>}
                                 </div>
 
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full bg-black text-white font-oswald uppercase font-bold text-2xl tracking-widest py-6 border-2 border-black hover:bg-brand-orange hover:border-black hover:text-white transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 relative group overflow-hidden"
-                                >
-                                    <span className="relative z-10 flex items-center gap-3">
-                                        {isSubmitting ? (
-                                            <>
-                                                <Loader2 className="w-6 h-6 animate-spin" />
-                                                Transmitting...
-                                            </>
-                                        ) : (
-                                            "TRANSMIT BRIEF"
-                                        )}
-                                    </span>
-                                </button>
+                                <div className="flex flex-col gap-3">
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full bg-black text-white font-oswald uppercase font-bold text-2xl tracking-widest py-6 border-2 border-black hover:bg-brand-orange hover:border-black hover:text-white transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 relative group overflow-hidden"
+                                    >
+                                        <span className="relative z-10 flex items-center gap-3">
+                                            {isSubmitting ? (
+                                                <>
+                                                    <Loader2 className="w-6 h-6 animate-spin" />
+                                                    Transmitting...
+                                                </>
+                                            ) : (
+                                                "TRANSMIT BRIEF"
+                                            )}
+                                        </span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={closeProjectModal}
+                                        className="w-full bg-transparent text-zinc-500 font-mono text-sm uppercase py-4 hover:text-black transition-colors"
+                                    >
+                                        [ CANCEL / CLOSE ]
+                                    </button>
+                                </div>
                             </form>
                         )}
                     </motion.div>
