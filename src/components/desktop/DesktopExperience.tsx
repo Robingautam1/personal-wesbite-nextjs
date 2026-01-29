@@ -56,9 +56,16 @@ const TrustMarquee = () => {
         { text: "///", style: "separator" },
     ];
 
-    // High Contrast Band: Black BG with Cream Text
+    // High Contrast Band: Black BG with Cream Text (Forced)
     return (
-        <div className="border-y-4 border-black bg-brand-black py-10 overflow-hidden relative" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+        <div
+            className="border-y-4 border-black bg-[#050505] py-10 overflow-hidden relative"
+            style={{
+                backgroundColor: '#050505',
+                maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+            }}
+        >
             <motion.div
                 className="flex whitespace-nowrap items-center"
                 animate={{ x: ["0%", "-50%"] }}
