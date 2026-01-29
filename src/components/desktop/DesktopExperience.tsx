@@ -133,7 +133,10 @@ export default function DesktopExperience() {
             <Navbar onOpenBooking={openBooking} />
 
             {/* HERO SECTION - HYBRID DARK MODE */}
-            <header className="pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-6 border-b border-white/10 overflow-hidden relative bg-brand-black text-[#F4F3EE]">
+            <header
+                className="pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-6 border-b border-white/10 overflow-hidden relative bg-[#050505] text-[#F4F3EE]"
+                style={{ backgroundColor: '#050505', color: '#F4F3EE' }}
+            >
                 {/* Background Grid Pattern (White for Dark Mode) */}
                 <div className="absolute inset-0 opacity-[0.05]"
                     style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }}
