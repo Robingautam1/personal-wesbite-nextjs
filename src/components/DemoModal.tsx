@@ -77,10 +77,24 @@ export default function DemoModal({
                             {/* Header Bar */}
                             <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-brand-black/50 backdrop-blur-md z-10">
                                 <div className="flex items-center gap-4">
-                                    <div className="flex gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                        <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                                    <div className="flex gap-2 group/controls pt-[1px]">
+                                        <button
+                                            onClick={onClose}
+                                            className="w-3 h-3 rounded-full bg-[#FF5F56] flex items-center justify-center hover:brightness-90 transition-all"
+                                            aria-label="Close"
+                                        >
+                                            <X className="w-2 h-2 text-[#4c0000] opacity-0 group-hover/controls:opacity-100 transition-opacity" strokeWidth={3} />
+                                        </button>
+                                        <button
+                                            onClick={onClose}
+                                            className="w-3 h-3 rounded-full bg-[#FFBD2E] flex items-center justify-center hover:brightness-90 transition-all"
+                                            aria-label="Minimize"
+                                        >
+                                            <div className="w-2 h-[2px] bg-[#4c2d00] opacity-0 group-hover/controls:opacity-100 transition-opacity rounded-full" />
+                                        </button>
+                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] flex items-center justify-center">
+                                            {/* Green button remains inert for modal context */}
+                                        </div>
                                     </div>
                                     <div className="h-6 w-px bg-white/10 mx-2" />
                                     <div>
