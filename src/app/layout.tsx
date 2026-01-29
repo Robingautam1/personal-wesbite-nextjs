@@ -38,38 +38,16 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "Robin Gautam | MBA-Backed Digital Product Studio",
-  description: "I build high-performance digital revenue engines. From idea to launch in weeks, not months. Professional websites, booking systems, and digital infrastructure that drives growth.",
-  keywords: ["digital agency", "web development", "startup", "Next.js", "founder", "Robin Gautam", "MBA", "product studio"],
-  authors: [{ name: "Robin Gautam" }],
-  creator: "Robin Gautam",
-  metadataBase: new URL("https://robingautam.in"),
+  title: "Robin Gautam | Strategy-First Product Studio",
+  // Updated Description (Using Option 1)
+  description: "Robin Gautam Studio. Engineering business outcomes through code. Specializing in scalable Next.js architecture and digital strategy for high-growth ventures.",
   openGraph: {
-    title: "Robin Gautam | MBA-Backed Digital Product Studio",
-    description: "I build high-performance digital revenue engines. From idea to launch in weeks.",
+    title: "Robin Gautam | Strategy-First Product Studio",
+    description: "Robin Gautam Studio. Engineering business outcomes through code. Specializing in scalable Next.js architecture and digital strategy for high-growth ventures.",
     url: "https://robingautam.in",
-    siteName: "Robin Gautam",
+    siteName: "Robin Gautam Studio",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Robin Gautam - Digital Product Studio for Founders",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Robin Gautam | MBA-Backed Digital Product Studio",
-    description: "I build high-performance digital revenue engines. From idea to launch in weeks.",
-    images: ["/og-image.jpg"],
-    creator: "@robingautam",
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
