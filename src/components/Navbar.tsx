@@ -17,9 +17,9 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
     const isLightTheme = pathname === '/portfolio' || pathname === '/about';
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 ${isLightTheme
-            ? "bg-[#F4F3EE]/90 border-black/5"
-            : "bg-midnight-950/80 border-white/5"
+        <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-none md:backdrop-blur-xl border-b transition-colors duration-300 ${isLightTheme
+            ? "bg-[#F4F3EE] md:bg-[#F4F3EE]/90 border-black/5"
+            : "bg-[#050505] md:bg-[#050505]/80 border-white/5"
             }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
