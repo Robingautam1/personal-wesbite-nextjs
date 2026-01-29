@@ -30,22 +30,22 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                         </span>
                     </Link>
 
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="flex items-center gap-4 md:gap-8">
                         <Link
                             href="/process"
-                            className={`text-sm transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-zinc-400 hover:text-white"}`}
+                            className={`text-xs md:text-sm font-medium transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-[#F4F3EE] hover:text-white"}`}
                         >
                             Process
                         </Link>
                         <Link
                             href="/portfolio"
-                            className={`text-sm transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-zinc-400 hover:text-white"}`}
+                            className={`text-xs md:text-sm font-medium transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-[#F4F3EE] hover:text-white"}`}
                         >
                             Work
                         </Link>
                         <Link
                             href="/about"
-                            className={`text-sm transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-zinc-400 hover:text-white"}`}
+                            className={`text-xs md:text-sm font-medium transition-colors ${isLightTheme ? "text-zinc-500 hover:text-[#F35815]" : "text-[#F4F3EE] hover:text-white"}`}
                         >
                             About
                         </Link>
