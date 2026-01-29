@@ -61,15 +61,13 @@ const TrustMarquee = () => {
         <div
             className="border-y-4 border-black bg-[#050505] py-10 overflow-hidden relative"
             style={{
-                backgroundColor: '#050505',
-                maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+                backgroundColor: '#050505'
             }}
         >
             <motion.div
                 className="flex whitespace-nowrap items-center"
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ repeat: Infinity, duration: 32, ease: "linear" }}
+                transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
             >
                 {[...items, ...items, ...items, ...items].map((item, i) => (
                     <span
