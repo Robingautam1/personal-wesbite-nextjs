@@ -98,9 +98,12 @@ const TrustMarquee = () => {
 // --- AI Tools Section ---
 // --- Arsenal / Services Section ---
 const ArsenalSection = () => (
-    <section className="py-24 border-b border-black/10 bg-[#F4F3EE]">
+    <section
+        className="py-24 border-b border-white/10 bg-[#050505]"
+        style={{ backgroundColor: '#050505' }}
+    >
         <div className="max-w-[1400px] mx-auto px-6">
-            <h2 className="text-2xl font-bold uppercase tracking-widest mb-12 flex items-center gap-4 text-black">
+            <h2 className="text-2xl font-bold uppercase tracking-widest mb-12 flex items-center gap-4 text-[#F4F3EE]">
                 <div className="w-8 h-[4px] bg-[#F35815]"></div>
                 OUR ARSENAL
             </h2>
@@ -111,8 +114,11 @@ const ArsenalSection = () => (
                     { name: "UI/UX SYSTEMS", icon: Bot, desc: "High-impact design systems that scream premium. Dark mode aesthetics and fluid animations." },
                     { name: "TECHNICAL SCALING", icon: LineChart, desc: "Refactoring legacy code, optimizing database queries, and setting up CI/CD pipelines for growth." }
                 ].map((tool, i) => (
-                    <div key={i} className="border-2 border-black/10 bg-white p-6 hover:border-black transition-all group flex flex-col h-full shadow-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <tool.icon className="w-8 h-8 text-zinc-400 group-hover:text-[#F35815] mb-4 transition-colors" />
+                    <div key={i} className="border border-white/10 bg-[#F4F3EE] p-6 hover:border-[#F35815] transition-all group flex flex-col h-full shadow-sm hover:shadow-[4px_4px_0px_0px_#F35815] relative">
+                        {/* Card Corner Accent */}
+                        <div className="absolute top-0 right-0 w-0 h-0 border-t-[8px] border-r-[8px] border-t-white/0 border-r-zinc-300 group-hover:border-r-[#F35815] transition-colors" />
+
+                        <tool.icon className="w-8 h-8 text-black/40 group-hover:text-[#F35815] mb-4 transition-colors" />
                         <h3 className="font-bold text-black uppercase tracking-wider mb-2">{tool.name}</h3>
                         <p className="text-sm text-zinc-600 font-mono leading-relaxed">{tool.desc}</p>
                     </div>
