@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Engineering Playbook - Robin Gautam Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #F4F3EE;
+            --text-black: #050505;
+            --brand-orange: #F35815;
+            --border-color: #1a1a1a;
+        }
+
+        body {
+            background-color: #555;
+            /* Dark background for browser view to pop the page */
+            margin: 0;
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-black);
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            background-color: var(--bg-cream);
+            width: 210mm;
+            /* A4 Width */
+            min-height: 297mm;
+            /* A4 Height */
+            padding: 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* Branding Elements */
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--text-black);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .brand-title {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .brand-subtitle {
+            font-family: 'Oswald', sans-serif;
+            color: var(--brand-orange);
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 42px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            border-left: 6px solid var(--brand-orange);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.03);
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--brand-orange);
+        }
+
+        p,
+        li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--text-black);
+        }
+
+        code {
+            font-family: 'Courier Prime', monospace;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            background: #111;
+            color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid var(--brand-orange);
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            border: none;
+            padding: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Checkbox Style for List */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background: var(--text-black);
+            color: #FFF;
+            font-size: 10px;
+            border-radius: 2px;
+        }
+
+        .checklist li.pending::before {
+            content: '';
+            background: transparent;
+            border: 2px solid var(--text-black);
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #888;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                display: block;
+            }
+
+            .page {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                margin: 0;
+                padding: 10mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <!-- Header with Logo -->
+        <div class="logo-container">
+            <div>
+                <div class="brand-title">Robin Gautam Studio</div>
+                <div class="brand-subtitle">Strategy-First Product Engineering</div>
+            </div>
+            <!-- Embedded SVG Logo -->
+            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="96" height="96" stroke="#050505" stroke-width="4" />
+                <rect x="70" y="70" width="30" height="30" fill="#F35815" />
+                <path
+                    d="M25 25 V75 H40 V60 H50 L60 75 H78 L65 55 C72 52 75 45 75 38 C75 28 68 25 55 25 H25 Z M40 38 H55 C58 38 60 40 60 42 C60 45 58 47 55 47 H40 V38 Z"
+                    fill="#050505" />
+            </svg>
+        </div>
+
+        <!-- Title Section -->
+        <h1>The "Zero to #1" Playbook</h1>
+        <p style="font-size: 16px; color: #666; font-weight: 500; margin-top: 0;">WEB ENGINEERING PROTOCOL v1.0 //
+            ARCHITECTURE & SEO STRATEGY</p>
+
+        <!-- Phase 1 -->
+        <h2>Phase 1: The Foundation (Architecture)</h2>
+        <p><strong>Goal:</strong> Build a scalable, high-performance engine that Google loves.</p>
+
+        <h3>1. The Tech Stack</h3>
+        <p>We selected a stack optimized for <strong>Speed</strong> and <strong>SEO</strong>:</p>
+        <ul>
+            <li><strong>Next.js 14 (App Router)</strong>: Server-Side Rendering (SSR) for instant indexing.</li>
+            <li><strong>TypeScript</strong>: Ensures robust, type-safe logic.</li>
+            <li><strong>Tailwind CSS</strong>: Zero-runtime styling for blazing fast loads.</li>
+            <li><strong>Supabase</strong>: PostgreSQL database for secure lead capture.</li>
+        </ul>
+
+        <h3>2. File Structure Strategy</h3>
+        <pre><code>src/
+├── app/                 # Routes (URL Paths)
+│   ├── layout.tsx       # Global Shell (Metadata)
+│   ├── icon.tsx         # Dynamic Favicon
+│   └── opengraph-image.tsx # Social Cards
+├── components/          # Reusable UI</code></pre>
+
+        <!-- Phase 2 -->
+        <h2>Phase 2: The Identity (Brand Engineering)</h2>
+        <p><strong>Goal:</strong> Create a memorable visual language that converts.</p>
+
+        <h3>The "Digital Industrial" Aesthetic</h3>
+        <p>We rejected generic templates for a custom, high-impact look:</p>
+        <ul>
+            <li><strong>Typography:</strong> Oswald (Industrial Headlines) + Inter (Clean Content).</li>
+            <li><strong>Palette:</strong> Deep Black (<code>#050505</code>), Cream (<code>#F4F3EE</code>), Safety Orange
+                (<code>#F35815</code>).</li>
+            <li><strong>Hybrid Mode:</strong> Hero section is forcibly Dark for impact; content is Light for
+                readability.</li>
+        </ul>
+
+        <!-- Phase 3 -->
+        <h2>Phase 3: Technical SEO (Ranking Factors)</h2>
+        <p><strong>Goal:</strong> Make it impossible for Google to ignore you.</p>
+
+        <h3>1. Dynamic Metadata</h3>
+        <p>We engineered the `layout.tsx` to serve rich metadata explicitly:</p>
+        <pre><code class="language-tsx">export const metadata = {
+  title: "Robin Gautam | Strategy-First Product Studio",
+  icons: { icon: '/icon', apple: '/apple-icon' } // Critical for Visual Search
+};</code></pre>
+
+        <h3>2. Dynamic Assets</h3>
+        <ul>
+            <li><strong>Favicons:</strong> Generated via code (<code>icon.tsx</code>) for crisp resolution on all
+                devices.</li>
+            <li><strong>Social Cards:</strong> Auto-generated Open Graph images ensure professional sharing previews.
+            </li>
+        </ul>
+
+        <!-- Phase 4 -->
+        <h2>Phase 4: The Roadmap to #1</h2>
+
+        <h3>Content Engineering (Hub & Spoke)</h3>
+        <p>Google ranks answers. Build authority by writing:</p>
+        <ul>
+            <li><strong>Hubs:</strong> High-level strategy (e.g., "Why Startups Need Strategy-First Code").</li>
+            <li><strong>Spokes:</strong> Technical deep dives (e.g., "Building Industrial Marquees").</li>
+        </ul>
+
+        <h3>Checklist for Launch</h3>
+        <ul class="checklist">
+            <li>Brand Identity & Assets (Logo, Colors, Fonts)</li>
+            <li>Technical SEO (Metadata, Sitemaps, JSON-LD)</li>
+            <li>Backend Integration (Forms -> DB -> Email)</li>
+            <li>Performance Optimization (Core Web Vitals)</li>
+            <li class="pending">Content Marketing Strategy</li>
+            <li class="pending">Backlink Building</li>
+        </ul>
+
+        <div class="footer">
+            <span>Generated for Robin Gautam</span>
+            <span>Ref: RG-WEB-ENG-001</span>
+            <span>Confidential System Document</span>
+        </div>
+    </div>
+
+    <script>
+        // Auto-print when opened
+        window.onload = function () {
+            setTimeout(function () {
+                window.print();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

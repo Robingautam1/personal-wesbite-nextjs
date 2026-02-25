@@ -1,0 +1,17 @@
+{
+  "headers": [
+    {
+      "source": "/demos/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://robingautam.in https://www.robingautam.in"
+        }
+      ]
+    }
+  ]
+}
