@@ -8,6 +8,7 @@ import Link from "next/link";
 import PricingSection from "@/components/PricingSection";
 import DeployedWorkSection from "@/components/DeployedWorkSection";
 import SocialProofTicker from "@/components/SocialProofTicker";
+import DemosSection from "@/components/DemosSection";
 import { ArrowRight, Check, Zap, Globe, Package, Cpu, ArrowUpRight, Bot, Terminal, LineChart, FolderOpen } from "lucide-react";
 
 // --- Components ---
@@ -208,7 +209,7 @@ export default function DesktopExperience() {
                                 <div className="w-2 h-2 rounded-full bg-[#F35815] animate-pulse" />
                                 System Status
                             </span>
-                            <span className="font-mono text-xs text-zinc-500">v2.4.0</span>
+                            <span className="font-mono text-xs text-zinc-500">v2.5.0</span>
                         </div>
                         <SystemStatusTicker />
 
@@ -231,6 +232,9 @@ export default function DesktopExperience() {
 
             {/* DEPLOYED WORK SECTION */}
             <DeployedWorkSection />
+
+            {/* THE LAB - PROTOTYPES */}
+            <DemosSection />
 
             {/* PRICING SECTION - LIGHT MODE */}
             <PricingSection />

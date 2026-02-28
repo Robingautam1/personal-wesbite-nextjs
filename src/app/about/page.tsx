@@ -54,7 +54,7 @@ export default function ProfilePage() {
                             <div className="bg-[#0d0d0d] text-zinc-300 border border-[#1a1a1a] p-6 lg:p-8 hover:border-[#E85D26]/50 transition-colors shadow-none">
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                                     <div className="w-24 h-24 rounded-none overflow-hidden border-2 border-[#1a1a1a] shrink-0 relative filter grayscale group-hover:grayscale-0 transition-all">
-                                        <Image src="https://avatars.githubusercontent.com/Robingautam1" alt="Robin Gautam" fill className="object-cover" />
+                                        <Image src="/robin-avatar.jpg" alt="Robin Gautam" fill className="object-cover" />
                                     </div>
                                     <div className="flex-1 w-full sm:w-auto">
                                         <h2 className="font-oswald text-3xl font-bold uppercase tracking-tight mb-1 text-white">Robin Gautam</h2>

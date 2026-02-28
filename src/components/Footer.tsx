@@ -23,13 +23,15 @@ export default function Footer() {
                                 You've seen the strategy. You've seen the code. The only variable left is execution.
                             </p>
 
-                            <button
-                                onClick={openProjectModal}
+                            <a
+                                href="https://wa.me/918292511007?text=Hey%20Robin%2C%20I'm%20ready%20to%20initiate.%20Let's%20talk."
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group relative inline-flex items-center gap-4 px-8 py-4 bg-[#F35815] text-white font-oswald text-xl font-bold uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-all"
                             >
                                 <span>Initiate Protocol</span>
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -49,7 +51,7 @@ export default function Footer() {
                                 {/* Avatar */}
                                 <div className="w-24 h-32 bg-zinc-200 border-2 border-black shrink-0 overflow-hidden relative grayscale contrast-125">
                                     <img
-                                        src="https://github.com/Robingautam1.png"
+                                        src="/robin-avatar.jpg"
                                         alt="Robin Gautam"
                                         className="w-full h-full object-cover"
                                     />
@@ -129,7 +131,7 @@ export default function Footer() {
                         <h3 className="font-mono text-xs uppercase tracking-widest text-[#F35815]">Protocol</h3>
                         <ul className="space-y-4 font-mono text-sm">
                             <li><Link href="/process" className="hover:text-[#F35815] transition-colors">The Process</Link></li>
-                            <li><Link href="/#work" className="hover:text-[#F35815] transition-colors">Our Work</Link></li>
+                            <li><Link href="/work" className="hover:text-[#F35815] transition-colors">Our Work</Link></li>
                         </ul>
                     </div>
 

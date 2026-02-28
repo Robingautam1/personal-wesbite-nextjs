@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { ArrowLeft, ArrowRight, Terminal, FileText, Layout, Key } from "lucide-react";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // --- Card Data ---
 const cards = [
@@ -58,6 +60,7 @@ const cards = [
         icon: Key,
         color: "bg-[#E85D26] text-white",
         dark: true,
+        isOrange: true,
     },
 ];
 
@@ -119,13 +122,13 @@ const Card = ({
                         </p>
 
                         <div className="space-y-2">
-                            <div className="inline-block px-4 py-2 border-2 border-white/30 text-sm font-bold font-mono uppercase tracking-widest text-white">
+                            <div className={`inline-block px-4 py-2 border-2 text-sm font-bold font-mono uppercase tracking-widest ${'isOrange' in card && card.isOrange ? 'border-black text-black' : 'border-white/30 text-white'}`}>
                                 {card.metric}
                             </div>
-                            <p className="font-mono text-xs md:text-sm text-[#888] leading-relaxed pl-1">
+                            <p className={`font-mono text-xs md:text-sm leading-relaxed pl-1 ${'isOrange' in card && card.isOrange ? 'text-[#1a1a1a]' : 'text-[#888]'}`}>
                                 {card.metricDetail}
                             </p>
-                            <p className="font-mono text-xs text-[#666] uppercase tracking-widest pl-1">
+                            <p className={`font-mono text-xs uppercase tracking-widest pl-1 ${'isOrange' in card && card.isOrange ? 'text-[#1a1a1a]' : 'text-[#666]'}`}>
                                 {card.duration}
                             </p>
                         </div>
@@ -145,18 +148,8 @@ export default function ProcessPage() {
 
     return (
         <main ref={container} className="bg-[#0a0a0a] relative min-h-[200vh]">
-            {/* Navigation & Branding */}
-            <nav className="fixed top-0 left-0 right-0 p-6 md:p-8 flex justify-between items-center z-50 pointer-events-none text-white">
-                <Link href="/" className="pointer-events-auto group flex items-center gap-2 font-oswald text-2xl font-bold uppercase tracking-tighter">
-                    <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-sm group-hover:bg-[#E85D26] group-hover:text-white transition-colors">
-                        <ArrowLeft className="w-5 h-5" />
-                    </div>
-                    <span>Back to Base</span>
-                </Link>
-                <div className="font-mono text-sm tracking-widest hidden md:block text-zinc-500">
-                    PROTOCOL: EXECUTION
-                </div>
-            </nav>
+            {/* Standard Site Navigation */}
+            <Navbar onOpenBooking={() => { }} />
 
             {/* Intro Section */}
             <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-20 pt-32 pb-20">
@@ -165,9 +158,10 @@ export default function ProcessPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <h1 className="font-oswald text-[15vw] md:text-[12vw] leading-[0.8] font-bold uppercase tracking-tighter text-white mb-12">
+                    <h1 className="font-oswald text-[15vw] md:text-[12vw] leading-[0.8] font-bold uppercase tracking-tighter text-white mb-4">
                         The<br /><span className="text-transparent stroke-text-white opacity-50">Protocol.</span>
                     </h1>
+                    <p className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-12">// PROTOCOL: EXECUTION</p>
                     <div className="max-w-2xl border-l-4 border-[#E85D26] pl-8 space-y-4">
                         <p className="font-mono text-xl md:text-2xl text-white font-medium leading-relaxed">
                             I don't guess. I engineer outcomes.
@@ -315,6 +309,8 @@ export default function ProcessPage() {
                     </p>
                 </div>
             </section>
+
+            <Footer />
         </main>
     );
 }
