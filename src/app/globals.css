@@ -389,3 +389,95 @@
   -webkit-text-stroke: 2px white;
   color: transparent;
 }
+
+/* === Terminal Confirmation Screen Animations === */
+
+/* Page entrance fade-in */
+.confirm-page-enter {
+  animation: confirmFadeIn 400ms ease-out both;
+}
+
+@keyframes confirmFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blinking terminal cursor */
+.confirm-blink-cursor {
+  animation: confirmBlink 1s step-end infinite;
+}
+
+@keyframes confirmBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Green dot pulse */
+.confirm-pulse-dot {
+  animation: confirmPulse 2s ease-in-out infinite;
+}
+
+@keyframes confirmPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.7;
+  }
+}
+
+/* CTA button glow */
+.confirm-glow-btn {
+  animation: confirmGlow 3s ease-in-out infinite;
+}
+
+@keyframes confirmGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(232, 93, 38, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(232, 93, 38, 0.45);
+  }
+}
+
+/* Typewriter dots for "DECRYPTING..." */
+.confirm-typewriter::after {
+  content: '...';
+  animation: confirmTypewriterDots 1.2s steps(3) infinite;
+}
+
+@keyframes confirmTypewriterDots {
+  0% {
+    content: '.';
+  }
+
+  33% {
+    content: '..';
+  }
+
+  66% {
+    content: '...';
+  }
+}
